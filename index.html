@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Weekly Menu</title>
+<style>
+  :root{
+    --paper: #FFFFFF;
+    --card: #FFFFFF;
+    --ink: #000000;
+    --ink-soft: #3A3A3A;
+    --line: #DADADA;
+    --tab-bg: #F0F0F0;
+    --primary: #3A5FA0;
+    --primary-light: #5B84AC;
+    --highlight: #E8BB3C;
+    --highlight-text: #3A3A3A;
+    --warn: #C1391F;
+    --armed: #2E9E7C;
+    --shadow: 0 2px 0 rgba(0,0,0,0.08);
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:Arial, Helvetica, sans-serif;
+    min-height:100vh;
+    padding:24px 20px 80px;
+  }
+
+  .wrap{max-width:1080px;margin:0 auto;}
+  button{ font-family:Arial, Helvetica, sans-serif; cursor:pointer; border:none; }
+
+  /* ---- calendar nav strip (small, sits above the big calendar) ---- */
+  .cal-nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:12px;
+  }
+  .cal-nav-left{display:flex; align-items:center; gap:10px;}
+  .cal-nav-right{display:flex; align-items:center; gap:8px;}
+  .nav-btn{
+    background:var(--card);
+    border:1.5px solid var(--ink);
+    color:var(--ink);
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    font-size:16px;
+    font-weight:700;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    line-height:1;
+  }
+  .nav-btn:hover{background:var(--ink); color:var(--paper);}
+  .range-label{
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight:700;
+    font-size:clamp(20px,3vw,28px);
+  }
+  .today-btn{
+    background:transparent;
+    border:1px solid var(--line);
+    color:var(--ink-soft);
+    font-size:12px;
+    font-weight:700;
+    padding:6px 14px;
+    border-radius:14px;
+  }
+  .today-btn:hover{border-color:var(--primary); color:var(--primary);}
+
+  .mode-bar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    min-height:30px;
+    margin-bottom:10px;
+    padding:7px 12px;
+    background:#FCF3DA;
+    border:1.5px dashed var(--highlight);
+    border-radius:8px;
+    font-size:13px;
+    font-weight:600;
+    color:#7A5A16;
+  }
+  .mode-bar.idle{ display:none; }
+  .mode-bar button{
+    background:transparent;
+    border:1px solid #7A5A16;
+    color:#7A5A16;
+    font-size:12px;
+    font-weight:700;
+    padding:4px 10px;
+    border-radius:14px;
+    flex-shrink:0;
+  }
+  .mode-bar button:hover{background:#7A5A16; color:#fff;}
+
+  /* ---- Planner grid (the star of the page) ---- */
+  .planner{
+    background:var(--card);
+    border:1.5px solid var(--ink);
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 4px 0 rgba(0,0,0,0.10);
+    margin-bottom:14px;
+  }
+  .week-block + .week-block{ border-top:2.5px solid var(--ink); }
+  .grid{
+    display:grid;
+    grid-template-columns: 100px repeat(7, 1fr);
+  }
+  .grid > div{
+    border-bottom:1px solid var(--line);
+    border-right:1px solid var(--line);
+    padding:10px;
+    min-height:88px;
+  }
+  .grid > div:nth-child(8n){border-right:none;}
+  .corner{background:var(--primary);}
+  .day-head{
+    background:var(--primary);
+    color:#FFFFFF;
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight:700;
+    font-size:16px;
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:2px;
+    min-height:auto !important;
+    padding:12px 8px !important;
+  }
+  .day-head.is-today{background:var(--highlight); color:var(--highlight-text);}
+  .day-head span{font-size:11px; opacity:0.85; font-family:Arial, Helvetica, sans-serif; font-weight:600; letter-spacing:0.03em;}
+  .meal-label{
+    background:var(--tab-bg);
+    font-weight:700;
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    display:flex;
+    align-items:center;
+    color:var(--primary);
+  }
+  .cell{
+    cursor:pointer;
+    transition:background 0.12s ease, outline 0.12s ease;
+    position:relative;
+    display:flex;
+    align-items:flex-start;
+  }
+  .cell:hover{background:#F2F5F9;}
+  .cell.filled{background:#F7F9FB;}
+  .cell.picked{outline:2px dashed var(--highlight); outline-offset:-3px; background:#FCF3DA;}
+  .cell-inner{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:4px;
+    width:100%;
+  }
+  .chip{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:6px;
+    width:100%;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:7px;
+    padding:6px 8px;
+    font-size:12.5px;
+    line-height:1.25;
+    font-weight:500;
+  }
+  .chip button{
+    background:none;
+    color:var(--ink-soft);
+    font-size:13px;
+    line-height:1;
+    flex-shrink:0;
+    padding:0 0 0 4px;
+  }
+  .chip button:hover{color:var(--warn);}
+  .placeholder{
+    font-size:11.5px;
+    color:#A8A8A8;
+    padding-top:2px;
+  }
+  .edit-btn{
+    background:none;
+    color:#B0B0B0;
+    font-size:11px;
+    padding:1px 3px;
+    line-height:1;
+    flex-shrink:0;
+    border-radius:4px;
+  }
+  .edit-btn:hover{color:var(--primary); background:var(--tab-bg);}
+  .cell-input{
+    width:100%;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:12.5px;
+    padding:5px 7px;
+    border:1.5px solid var(--primary);
+    border-radius:7px;
+    background:#fff;
+  }
+  .cell-input:focus{outline:none;}
+
+  /* ---- month overview grid ---- */
+  .month-grid{
+    display:grid;
+    grid-template-columns: repeat(7, 1fr);
+  }
+  .month-head{
+    background:var(--primary);
+    color:#FFFFFF;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:0.05em;
+    text-align:center;
+    padding:10px 4px;
+  }
+  .month-cell{
+    border-bottom:1px solid var(--line);
+    border-right:1px solid var(--line);
+    padding:8px;
+    min-height:96px;
+    cursor:pointer;
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+  }
+  .month-grid > div:nth-child(7n){border-right:none;}
+  .month-cell:hover{background:#F2F5F9;}
+  .month-cell.out{background:#FAFAFA; color:#C4C4C4;}
+  .month-cell.is-today{background:#FCF3DA;}
+  .month-daynum{
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight:700;
+    font-size:14px;
+  }
+  .month-cell.is-today .month-daynum{color:#8C6A10; }
+  .month-meals{
+    font-size:10.5px;
+    line-height:1.4;
+    color:var(--ink-soft);
+  }
+  .month-meals div{
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+
+  /* ---- view toggle + secondary actions (under calendar) ---- */
+  .under-cal{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:36px;
+  }
+  .view-toggle{
+    display:flex;
+    gap:4px;
+    background:var(--tab-bg);
+    border-radius:12px;
+    padding:4px;
+  }
+  .view-toggle button{
+    background:transparent;
+    color:var(--ink-soft);
+    font-size:13px;
+    font-weight:700;
+    padding:7px 16px;
+    border-radius:9px;
+  }
+  .view-toggle button.active{
+    background:var(--primary);
+    color:#fff;
+  }
+  .secondary-actions{display:flex; gap:8px;}
+  .btn-ghost{
+    background:transparent;
+    border:1.5px solid var(--ink);
+    color:var(--ink);
+    padding:7px 14px;
+    border-radius:20px;
+    font-size:12.5px;
+    font-weight:600;
+  }
+  .btn-ghost:hover{background:var(--ink); color:var(--paper);}
+
+  /* ---- Library ---- */
+  .library{ margin-bottom:36px; }
+  .library h2{
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:22px;
+    margin:0 0 4px;
+  }
+  .library p.hint{
+    color:var(--ink-soft);
+    font-size:13px;
+    margin:0 0 16px;
+  }
+  .tabs{
+    display:flex;
+    gap:6px;
+    margin-bottom:14px;
+  }
+  .tab{
+    background:var(--tab-bg);
+    color:var(--ink-soft);
+    font-weight:700;
+    font-size:13px;
+    padding:8px 16px;
+    border-radius:8px 8px 0 0;
+    border:1px solid var(--line);
+    border-bottom:none;
+  }
+  .tab.active{
+    background:var(--card);
+    color:var(--ink);
+    border-color:var(--ink);
+  }
+  .panel{
+    background:var(--card);
+    border:1.5px solid var(--ink);
+    border-radius:0 10px 10px 10px;
+    padding:16px;
+    box-shadow:var(--shadow);
+  }
+  .meal-grid{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:14px;
+  }
+  .meal-card{
+    background:var(--tab-bg);
+    border:1.5px solid var(--line);
+    border-radius:20px;
+    padding:7px 12px;
+    font-size:13px;
+    font-weight:500;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    user-select:none;
+  }
+  .meal-card:hover{border-color:var(--ink);}
+  .meal-card.armed{
+    background:var(--armed);
+    color:#fff;
+    border-color:var(--armed);
+  }
+  .meal-card .x{
+    color:#8C8C8C;
+    font-size:13px;
+    line-height:1;
+  }
+  .meal-card.armed .x{color:#E4F5F0;}
+  .meal-card .x:hover{color:var(--warn);}
+  .tag-select-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:14px;
+    padding-bottom:14px;
+    border-bottom:1px dashed var(--line);
+  }
+  .tag-select-row label{
+    font-size:12px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    color:var(--ink-soft);
+  }
+  #tagSelect{
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:13.5px;
+    font-weight:600;
+    padding:8px 12px;
+    border:1.5px solid var(--line);
+    border-radius:8px;
+    background:var(--paper);
+    color:var(--ink);
+    min-width:180px;
+  }
+  #tagSelect:focus{outline:none; border-color:var(--primary);}
+  .add-row{display:flex; gap:8px;}
+  .add-row input{
+    flex:1;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:13.5px;
+    padding:9px 12px;
+    border:1.5px solid var(--line);
+    border-radius:8px;
+    background:var(--paper);
+  }
+  .add-row input:focus{outline:none; border-color:var(--primary);}
+  .add-row button{
+    background:var(--primary);
+    color:#fff;
+    padding:9px 16px;
+    border-radius:8px;
+    font-weight:600;
+    font-size:13.5px;
+  }
+  .add-row button:hover{background:var(--primary-light);}
+
+  /* ---- Export (bottom, inline box) ---- */
+  .export-section h2{
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:22px;
+    margin:0 0 4px;
+  }
+  .export-section p.hint{
+    color:var(--ink-soft);
+    font-size:13px;
+    margin:0 0 16px;
+  }
+  .export-box{
+    background:var(--card);
+    border:1.5px solid var(--ink);
+    border-radius:12px;
+    padding:16px;
+    box-shadow:var(--shadow);
+  }
+  .export-box textarea{
+    width:100%;
+    min-height:260px;
+    font-family:'SFMono-Regular', Consolas, monospace;
+    font-size:12.5px;
+    line-height:1.5;
+    padding:12px;
+    border:1.5px solid var(--line);
+    border-radius:8px;
+    background:var(--paper);
+    resize:vertical;
+    color:var(--ink);
+    margin-bottom:12px;
+  }
+  .export-foot{
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    gap:12px;
+  }
+  .btn-solid{
+    background:var(--primary);
+    color:#fff;
+    padding:9px 18px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:700;
+  }
+  .btn-solid:hover{background:var(--primary-light);}
+  .copy-status{ font-size:12px; color:var(--ink-soft); font-weight:600; }
+
+  .status{
+    font-size:11.5px;
+    color:var(--ink-soft);
+    text-align:center;
+    margin-top:24px;
+  }
+
+  @media (max-width: 760px){
+    .grid{grid-template-columns: 64px repeat(7, minmax(96px,1fr));}
+    .month-grid{grid-template-columns: repeat(7, minmax(60px,1fr));}
+    .planner{overflow-x:auto;}
+    .grid{width:max-content; min-width:100%;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="cal-nav">
+    <div class="cal-nav-left">
+      <button class="nav-btn" id="prevBtn" title="Previous">‹</button>
+      <div class="range-label" id="rangeLabel">&nbsp;</div>
+      <button class="nav-btn" id="nextBtn" title="Next">›</button>
+    </div>
+    <div class="cal-nav-right">
+      <button class="today-btn" id="todayBtn">Jump to today</button>
+      <button class="today-btn" id="printBtn">Download PDF</button>
+    </div>
+  </div>
+
+  <div class="mode-bar idle" id="modeBar"></div>
+
+  <div class="planner" id="planner"></div>
+
+  <div class="under-cal">
+    <div class="view-toggle" id="viewToggle">
+      <button data-view="week" class="active">1 week</button>
+      <button data-view="twoWeek">2 weeks</button>
+      <button data-view="month">Month</button>
+    </div>
+    <div class="secondary-actions">
+      <button class="btn-ghost" id="clearWeek">Clear visible</button>
+      <button class="btn-ghost" id="shuffleWeek">Surprise me</button>
+    </div>
+  </div>
+
+  <div class="library">
+    <h2>Meals</h2>
+    <div class="panel">
+      <div class="tag-select-row">
+        <label for="tagSelect">Filter by tag</label>
+        <select id="tagSelect"></select>
+      </div>
+      <div class="meal-grid" id="mealGrid"></div>
+    </div>
+  </div>
+
+  <div class="export-section">
+    <h2>Export</h2>
+    <div class="export-box">
+      <textarea id="exportText" readonly></textarea>
+      <div class="export-foot">
+        <span class="copy-status" id="copyStatus"></span>
+        <button class="btn-ghost" id="downloadBtn">Download as .md</button>
+        <button class="btn-solid" id="copyBtn">Copy to clipboard</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="status" id="status">Loading your meals…</div>
+</div>
+
+<script src="vendor/jspdf.umd.min.js"></script>
+<script src="vendor/jspdf.plugin.autotable.min.js"></script>
+<script>
+const CATEGORIES = ['Breakfast','Lunch','Dinner'];
+const WEEKDAY_NAMES = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+
+let library = null;
+let planByDate = null;         // { "YYYY-MM-DD": {Breakfast:'',Lunch:'',Dinner:''} }
+let recipesData = [];          // parsed content of recipes.json (full recipe objects)
+let viewMode = 'week';         // 'week' | 'twoWeek' | 'month'
+let currentWeekStart = getMonday(new Date());  // anchor for week/twoWeek
+let currentMonth = firstOfMonth(new Date());   // anchor for month view
+let activeTag = null;           // currently selected tag filter, or null for "All"
+let armedMeal = null;           // {name}
+let selectedCells = new Set();  // "YYYY-MM-DD|Category"
+let editingKey = null;          // "YYYY-MM-DD|Category"
+
+const statusEl = document.getElementById('status');
+function setStatus(msg){ statusEl.textContent = msg; }
+
+/* ---------- storage: plain localStorage, works in any browser / GitHub Pages ---------- */
+window.storage = {
+  async get(key, shared=false){
+    const raw = localStorage.getItem((shared?'shared:':'local:')+key);
+    if(raw === null) return null;
+    return { key, value: raw, shared };
+  },
+  async set(key, value, shared=false){
+    localStorage.setItem((shared?'shared:':'local:')+key, value);
+    return { key, value, shared };
+  },
+  async delete(key, shared=false){
+    localStorage.removeItem((shared?'shared:':'local:')+key);
+    return { key, deleted:true, shared };
+  },
+  async list(prefix='', shared=false){
+    const pfx = (shared?'shared:':'local:')+prefix;
+    const keys = [];
+    for(let i=0;i<localStorage.length;i++){
+      const k = localStorage.key(i);
+      if(k.startsWith(pfx)) keys.push(k.slice((shared?'shared:':'local:').length));
+    }
+    return { keys, prefix, shared };
+  }
+};
+
+/* ---------- recipes.json: the source of truth for the meal library ---------- */
+async function fetchRecipes(){
+  try{
+    const res = await fetch('recipes.json', {cache:'no-store'});
+    if(!res.ok) throw new Error('HTTP '+res.status);
+    recipesData = await res.json();
+    return true;
+  }catch(e){
+    recipesData = [];
+    setStatus('Could not load recipes.json — serve this folder with a local server (e.g. "npx serve ." or "python3 -m http.server"), not by opening the file directly.');
+    return false;
+  }
+}
+function libraryFromRecipes(){
+  const lib = {Breakfast:[], Lunch:[], Dinner:[]};
+  recipesData.forEach(r=>{
+    (r.slots && r.slots.length ? r.slots : ['Dinner']).forEach(slot=>{
+      if(lib[slot] && !lib[slot].includes(r.name)) lib[slot].push(r.name);
+    });
+  });
+  return lib;
+}
+function allTags(){
+  const set = new Set();
+  recipesData.forEach(r => (r.tags||[]).forEach(t=>set.add(t)));
+  return [...set].sort();
+}
+function recipesForTag(tag){
+  return recipesData
+    .filter(r => !tag || (r.tags||[]).includes(tag))
+    .map(r => r.name)
+    .sort();
+}
+
+/* ---------- date helpers ---------- */
+function getMonday(d){
+  const date = new Date(d);
+  date.setHours(0,0,0,0);
+  const day = date.getDay();
+  const diff = (day === 0 ? -6 : 1 - day);
+  date.setDate(date.getDate() + diff);
+  return date;
+}
+function firstOfMonth(d){ return new Date(d.getFullYear(), d.getMonth(), 1); }
+function addDays(date, n){ const d = new Date(date); d.setDate(d.getDate()+n); return d; }
+function addMonths(date, n){ return new Date(date.getFullYear(), date.getMonth()+n, 1); }
+function dateKey(d){
+  const y = d.getFullYear(), m = String(d.getMonth()+1).padStart(2,'0'), day = String(d.getDate()).padStart(2,'0');
+  return `${y}-${m}-${day}`;
+}
+function shortLabel(d){ return d.toLocaleDateString('en-US',{weekday:'short'}); }
+function monthDayLabel(d){ return d.toLocaleDateString('en-US',{month:'numeric', day:'numeric'}); }
+function longLabel(d){ return d.toLocaleDateString('en-US',{weekday:'long', month:'short', day:'numeric'}); }
+
+function visibleDates(){
+  if(viewMode === 'week') return Array.from({length:7}, (_,i)=>addDays(currentWeekStart,i));
+  if(viewMode === 'twoWeek') return Array.from({length:14}, (_,i)=>addDays(currentWeekStart,i));
+  // month: full weeks covering the month
+  const start = getMonday(currentMonth);
+  const last = new Date(currentMonth.getFullYear(), currentMonth.getMonth()+1, 0);
+  const dates = [];
+  let cursor = new Date(start);
+  while(true){
+    dates.push(new Date(cursor));
+    cursor = addDays(cursor,1);
+    if(cursor > last && dates.length % 7 === 0) break;
+  }
+  return dates;
+}
+
+function rangeLabel(){
+  if(viewMode === 'month'){
+    return currentMonth.toLocaleDateString('en-US',{month:'long', year:'numeric'});
+  }
+  const dates = visibleDates();
+  const start = dates[0], end = dates[dates.length-1];
+  const sameMonth = start.getMonth()===end.getMonth();
+  const startStr = start.toLocaleDateString('en-US',{month:'short', day:'numeric'});
+  const endStr = end.toLocaleDateString('en-US', sameMonth ? {day:'numeric'} : {month:'short', day:'numeric'});
+  return `${startStr} – ${endStr}, ${end.getFullYear()}`;
+}
+
+/* ---------- load / save ---------- */
+async function loadState(){
+  const loadedRecipes = await fetchRecipes();
+  library = loadedRecipes && recipesData.length ? libraryFromRecipes() : {Breakfast:[], Lunch:[], Dinner:[]};
+  try{
+    const planResult = await window.storage.get('planByDate', false).catch(()=>null);
+    planByDate = planResult ? JSON.parse(planResult.value) : {};
+  }catch(e){
+    planByDate = {};
+  }
+  if(Object.keys(planByDate).length === 0){
+    try{
+      const legacy = await window.storage.get('weeklyPlan', false).catch(()=>null);
+      if(legacy){
+        const old = JSON.parse(legacy.value);
+        WEEKDAY_NAMES.forEach((name, i)=>{
+          if(old[name]){
+            const key = dateKey(addDays(currentWeekStart, i));
+            planByDate[key] = old[name];
+          }
+        });
+        await savePlan();
+      }
+    }catch(e){ /* no legacy data */ }
+  }
+  if(loadedRecipes) setStatus('Saved automatically to this browser.');
+  activeTag = null;
+  renderTagList();
+  renderMealGrid();
+  renderAll();
+}
+
+function getDayPlan(key){
+  if(!planByDate[key]) planByDate[key] = {Breakfast:'', Lunch:'', Dinner:''};
+  return planByDate[key];
+}
+
+async function savePlan(){
+  try{ await window.storage.set('planByDate', JSON.stringify(planByDate), false); }
+  catch(e){ setStatus('Could not save — changes may not persist.'); }
+}
+
+function renderAll(){
+  document.getElementById('rangeLabel').textContent = rangeLabel();
+  renderPlanner();
+  renderModeBar();
+  refreshExportText();
+}
+
+/* ---------- mode bar ---------- */
+function renderModeBar(){
+  const bar = document.getElementById('modeBar');
+  bar.innerHTML = '';
+  if(selectedCells.size > 0){
+    bar.className = 'mode-bar';
+    const text = document.createElement('span');
+    text.textContent = `${selectedCells.size} slot${selectedCells.size>1?'s':''} selected — tap a meal to fill ${selectedCells.size>1?'them all':'it'}.`;
+    bar.appendChild(text);
+    const clearBtn = document.createElement('button');
+    clearBtn.textContent = 'Cancel';
+    clearBtn.onclick = ()=>{ selectedCells.clear(); renderPlanner(); renderModeBar(); };
+    bar.appendChild(clearBtn);
+  } else if(armedMeal){
+    bar.className = 'mode-bar';
+    const text = document.createElement('span');
+    text.textContent = `"${armedMeal.name}" picked up — tap any number of days to place it.`;
+    bar.appendChild(text);
+    const clearBtn = document.createElement('button');
+    clearBtn.textContent = 'Put down';
+    clearBtn.onclick = ()=>{ armedMeal = null; renderMealGrid(); renderModeBar(); };
+    bar.appendChild(clearBtn);
+  } else {
+    bar.className = 'mode-bar idle';
+  }
+}
+
+/* ---------- meal library (tag filter + grid) ---------- */
+function renderTagList(){
+  const select = document.getElementById('tagSelect');
+  select.innerHTML = '';
+
+  const allOpt = document.createElement('option');
+  allOpt.value = '';
+  allOpt.textContent = `All (${recipesData.length})`;
+  select.appendChild(allOpt);
+
+  allTags().forEach(tag=>{
+    const opt = document.createElement('option');
+    opt.value = tag;
+    opt.textContent = tag;
+    select.appendChild(opt);
+  });
+
+  select.value = activeTag || '';
+  select.onchange = () => {
+    activeTag = select.value || null;
+    renderMealGrid();
+  };
+}
+
+function renderMealGrid(){
+  const grid = document.getElementById('mealGrid');
+  grid.innerHTML = '';
+  recipesForTag(activeTag).forEach(name=>{
+    const card = document.createElement('div');
+    const isArmed = armedMeal && armedMeal.name===name;
+    card.className = 'meal-card' + (isArmed ? ' armed' : '');
+    const label = document.createElement('span');
+    label.textContent = name;
+    card.appendChild(label);
+    card.onclick = ()=> handleMealClick(name);
+    grid.appendChild(card);
+  });
+  if(!grid.children.length){
+    const empty = document.createElement('p');
+    empty.className = 'hint';
+    empty.style.margin = '0';
+    empty.textContent = 'No meals match that tag.';
+    grid.appendChild(empty);
+  }
+}
+
+function handleMealClick(name){
+  if(selectedCells.size > 0){
+    selectedCells.forEach(key=>{
+      const [dKey, cat] = key.split('|');
+      getDayPlan(dKey)[cat] = name;
+    });
+    selectedCells.clear();
+    savePlan();
+    renderPlanner();
+    renderModeBar();
+    refreshExportText();
+    return;
+  }
+  if(armedMeal && armedMeal.name===name){
+    armedMeal = null;
+  } else {
+    armedMeal = {name};
+  }
+  renderMealGrid();
+  renderModeBar();
+}
+
+/* ---------- planner (week / twoWeek / month) ---------- */
+function renderPlanner(){
+  const planner = document.getElementById('planner');
+  planner.innerHTML = '';
+  if(viewMode === 'month'){
+    planner.appendChild(buildMonthView());
+    return;
+  }
+  const dates = visibleDates();
+  if(viewMode === 'week'){
+    planner.appendChild(buildWeekBlock(dates));
+  } else {
+    planner.appendChild(buildWeekBlock(dates.slice(0,7)));
+    planner.appendChild(buildWeekBlock(dates.slice(7,14)));
+  }
+}
+
+function buildWeekBlock(dates){
+  const block = el('week-block');
+  const grid = el('grid');
+  const today = dateKey(new Date());
+
+  grid.appendChild(el('corner'));
+  dates.forEach(d=>{
+    const head = el('day-head' + (dateKey(d)===today ? ' is-today' : ''));
+    head.innerHTML = `${shortLabel(d)}<span>${monthDayLabel(d)}</span>`;
+    grid.appendChild(head);
+  });
+
+  CATEGORIES.forEach(cat=>{
+    const label = el('meal-label');
+    label.textContent = cat;
+    grid.appendChild(label);
+
+    dates.forEach(d=>{
+      const dKey = dateKey(d);
+      const key = dKey + '|' + cat;
+      const cell = el('cell');
+
+      if(editingKey === key){
+        cell.appendChild(buildEditInput(dKey, cat));
+        grid.appendChild(cell);
+        return;
+      }
+
+      const val = getDayPlan(dKey)[cat];
+      if(val) cell.classList.add('filled');
+      if(selectedCells.has(key)) cell.classList.add('picked');
+
+      const inner = document.createElement('div');
+      inner.className = 'cell-inner';
+
+      if(val){
+        const chip = document.createElement('div');
+        chip.className = 'chip';
+        const span = document.createElement('span');
+        span.textContent = val;
+        chip.appendChild(span);
+        const btn = document.createElement('button');
+        btn.textContent = '✕';
+        btn.title = 'Clear';
+        btn.onclick = (e)=>{
+          e.stopPropagation();
+          getDayPlan(dKey)[cat] = '';
+          savePlan();
+          renderPlanner();
+          refreshExportText();
+        };
+        chip.appendChild(btn);
+        inner.appendChild(chip);
+      } else {
+        const ph = document.createElement('div');
+        ph.className = 'placeholder';
+        ph.textContent = '+ add';
+        inner.appendChild(ph);
+      }
+
+      const editBtn = document.createElement('button');
+      editBtn.className = 'edit-btn';
+      editBtn.textContent = '✎';
+      editBtn.title = "Type your own (won't be saved to the library)";
+      editBtn.onclick = (e)=>{
+        e.stopPropagation();
+        editingKey = key;
+        renderPlanner();
+      };
+      inner.appendChild(editBtn);
+
+      cell.appendChild(inner);
+      cell.onclick = ()=> handleCellClick(dKey, cat);
+      grid.appendChild(cell);
+    });
+  });
+
+  block.appendChild(grid);
+  return block;
+}
+
+function buildMonthView(){
+  const wrap = el('week-block');
+  const grid = el('month-grid');
+  const dates = visibleDates();
+  const today = dateKey(new Date());
+
+  ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].forEach(d=>{
+    const h = el('month-head');
+    h.textContent = d;
+    grid.appendChild(h);
+  });
+
+  dates.forEach(d=>{
+    const dKey = dateKey(d);
+    const inMonth = d.getMonth() === currentMonth.getMonth();
+    const cell = el('month-cell' + (!inMonth ? ' out' : '') + (dKey===today ? ' is-today' : ''));
+    const num = el('month-daynum');
+    num.textContent = d.getDate();
+    cell.appendChild(num);
+
+    const dp = getDayPlan(dKey);
+    const meals = el('month-meals');
+    CATEGORIES.forEach(cat=>{
+      if(dp[cat]){
+        const line = document.createElement('div');
+        line.textContent = `${cat[0]}: ${dp[cat]}`;
+        meals.appendChild(line);
+      }
+    });
+    cell.appendChild(meals);
+
+    cell.onclick = ()=>{
+      currentWeekStart = getMonday(d);
+      viewMode = 'week';
+      document.querySelectorAll('#viewToggle button').forEach(b=>{
+        b.classList.toggle('active', b.dataset.view==='week');
+      });
+      renderAll();
+    };
+    grid.appendChild(cell);
+  });
+
+  wrap.appendChild(grid);
+  return wrap;
+}
+
+function buildEditInput(dKey, cat){
+  const input = document.createElement('input');
+  input.className = 'cell-input';
+  input.type = 'text';
+  input.maxLength = 60;
+  input.placeholder = 'Type anything… e.g. Eating out';
+  input.value = getDayPlan(dKey)[cat] || '';
+  const commit = ()=>{
+    getDayPlan(dKey)[cat] = input.value.trim();
+    editingKey = null;
+    savePlan();
+    renderPlanner();
+    refreshExportText();
+  };
+  input.onblur = commit;
+  input.onkeydown = (e)=>{
+    if(e.key === 'Enter'){ input.blur(); }
+    if(e.key === 'Escape'){ editingKey = null; renderPlanner(); }
+  };
+  setTimeout(()=>{ input.focus(); input.select(); }, 0);
+  return input;
+}
+
+function handleCellClick(dKey, cat){
+  const key = dKey + '|' + cat;
+  if(armedMeal){
+    getDayPlan(dKey)[cat] = armedMeal.name;
+    savePlan();
+    renderPlanner();
+    refreshExportText();
+    return;
+  }
+  if(selectedCells.has(key)) selectedCells.delete(key);
+  else selectedCells.add(key);
+  renderPlanner();
+  renderModeBar();
+}
+
+function el(cls){
+  const d = document.createElement('div');
+  d.className = cls;
+  return d;
+}
+
+/* ---------- nav + view toggle ---------- */
+function resetSelectionState(){ selectedCells.clear(); armedMeal = null; editingKey = null; }
+
+document.getElementById('prevBtn').onclick = ()=>{
+  if(viewMode==='week') currentWeekStart = addDays(currentWeekStart,-7);
+  else if(viewMode==='twoWeek') currentWeekStart = addDays(currentWeekStart,-14);
+  else currentMonth = addMonths(currentMonth,-1);
+  resetSelectionState();
+  renderAll(); renderMealGrid();
+};
+document.getElementById('nextBtn').onclick = ()=>{
+  if(viewMode==='week') currentWeekStart = addDays(currentWeekStart,7);
+  else if(viewMode==='twoWeek') currentWeekStart = addDays(currentWeekStart,14);
+  else currentMonth = addMonths(currentMonth,1);
+  resetSelectionState();
+  renderAll(); renderMealGrid();
+};
+document.getElementById('todayBtn').onclick = ()=>{
+  currentWeekStart = getMonday(new Date());
+  currentMonth = firstOfMonth(new Date());
+  resetSelectionState();
+  renderAll(); renderMealGrid();
+};
+
+/* ---------- PDF export (jsPDF + autotable, vendored locally) ---------- */
+function formatMMDD(d){
+  return String(d.getMonth()+1).padStart(2,'0') + String(d.getDate()).padStart(2,'0');
+}
+function pdfFilename(){
+  const dates = visibleDates();
+  const start = dates[0], end = dates[dates.length-1];
+  return `menu-${formatMMDD(start)}-${formatMMDD(end)}.pdf`;
+}
+function weekTableData(dates){
+  const head = [['', ...dates.map(d => `${shortLabel(d)}\n${monthDayLabel(d)}`)]];
+  const body = CATEGORIES.map(cat => [
+    cat,
+    ...dates.map(d => getDayPlan(dateKey(d))[cat] || '—')
+  ]);
+  return { head, body };
+}
+function monthTableData(dates){
+  const head = [['Mon','Tue','Wed','Thu','Fri','Sat','Sun']];
+  const body = [];
+  for(let i=0; i<dates.length; i+=7){
+    const week = dates.slice(i, i+7);
+    body.push(week.map(d=>{
+      const dp = getDayPlan(dateKey(d));
+      const lines = [String(d.getDate())];
+      if(dp.Breakfast) lines.push(`B: ${dp.Breakfast}`);
+      if(dp.Lunch) lines.push(`L: ${dp.Lunch}`);
+      if(dp.Dinner) lines.push(`D: ${dp.Dinner}`);
+      return lines.join('\n');
+    }));
+  }
+  return { head, body };
+}
+function generatePDF(){
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ orientation:'landscape', unit:'pt', format:'letter' });
+  const marginX = 40;
+  const primaryRGB = [58, 95, 160];
+  let y = 40;
+
+  const titleSize = viewMode === 'week' ? 24 : 18;
+  doc.setFont('helvetica','bold');
+  doc.setFontSize(titleSize);
+  doc.text('The Weekly Menu', marginX, y);
+  y += titleSize - 4;
+  doc.setFont('helvetica','normal');
+  doc.setFontSize(viewMode === 'week' ? 13 : 11);
+  doc.setTextColor(90);
+  doc.text(rangeLabel(), marginX, y);
+  doc.setTextColor(0);
+  y += viewMode === 'week' ? 26 : 20;
+
+  if(viewMode === 'month'){
+    const { head, body } = monthTableData(visibleDates());
+    doc.autoTable({
+      head, body,
+      startY: y,
+      margin: { left: marginX, right: marginX },
+      styles: { fontSize: 8, cellPadding: 5, valign: 'top', lineColor: [0,0,0], lineWidth: 0.5 },
+      headStyles: { fillColor: primaryRGB, textColor: 255, fontStyle: 'bold', halign: 'center' },
+      theme: 'grid'
+    });
+  } else {
+    const dates = visibleDates();
+    const isTwoWeek = viewMode === 'twoWeek';
+    const weeks = isTwoWeek ? [dates.slice(0,7), dates.slice(7,14)] : [dates];
+
+    // Single-week view gets a big, fridge-poster-sized table; two-week
+    // view stays compact enough for both weeks to fit on one page.
+    // Horizontal padding is kept tight on the single-week table so
+    // longer single-word meal names (e.g. "Sandwiches") wrap onto a
+    // new line instead of breaking mid-word.
+    const bodyStyles = isTwoWeek
+      ? { fontSize: 10, cellPadding: 6, minCellHeight: 44, valign: 'middle', halign: 'center', lineColor: [0,0,0], lineWidth: 0.5 }
+      : { fontSize: 14, cellPadding: { top: 14, right: 4, bottom: 14, left: 4 }, minCellHeight: 130, valign: 'middle', halign: 'center', lineColor: [0,0,0], lineWidth: 0.5 };
+    const headStyles = isTwoWeek
+      ? { fillColor: primaryRGB, textColor: 255, fontStyle: 'bold', halign: 'center', fontSize: 10, minCellHeight: 30 }
+      : { fillColor: primaryRGB, textColor: 255, fontStyle: 'bold', halign: 'center', fontSize: 14, minCellHeight: 50 };
+    const labelColStyle = isTwoWeek
+      ? { fontStyle: 'bold', fillColor: [240,240,240], cellWidth: 60, halign: 'left' }
+      : { fontStyle: 'bold', fillColor: [240,240,240], cellWidth: 75, fontSize: 14, halign: 'left' };
+
+    weeks.forEach((weekDates, i) => {
+      if(i > 0){
+        doc.setFont('helvetica','bold');
+        doc.setFontSize(11);
+        doc.text(`Week of ${longLabel(weekDates[0])}`, marginX, y + 16);
+        y += 22;
+      }
+      const { head, body } = weekTableData(weekDates);
+      doc.autoTable({
+        head, body,
+        startY: y,
+        margin: { left: marginX, right: marginX },
+        styles: bodyStyles,
+        headStyles: headStyles,
+        columnStyles: { 0: labelColStyle },
+        theme: 'grid'
+      });
+      y = doc.lastAutoTable.finalY + 24;
+    });
+  }
+
+  doc.save(pdfFilename());
+}
+document.getElementById('printBtn').onclick = generatePDF;
+
+document.getElementById('viewToggle').addEventListener('click', (e)=>{
+  const btn = e.target.closest('button[data-view]');
+  if(!btn) return;
+  viewMode = btn.dataset.view;
+  document.querySelectorAll('#viewToggle button').forEach(b=>b.classList.toggle('active', b===btn));
+  document.getElementById('clearWeek').style.display = viewMode==='month' ? 'none' : '';
+  document.getElementById('shuffleWeek').style.display = viewMode==='month' ? 'none' : '';
+  resetSelectionState();
+  renderAll(); renderMealGrid();
+});
+
+/* ---------- clear / shuffle ---------- */
+document.getElementById('clearWeek').onclick = ()=>{
+  visibleDates().forEach(d=>{
+    planByDate[dateKey(d)] = {Breakfast:'', Lunch:'', Dinner:''};
+  });
+  resetSelectionState();
+  savePlan();
+  renderPlanner();
+  renderMealGrid();
+  renderModeBar();
+  refreshExportText();
+};
+
+document.getElementById('shuffleWeek').onclick = ()=>{
+  visibleDates().forEach(d=>{
+    const dKey = dateKey(d);
+    CATEGORIES.forEach(cat=>{
+      const options = library[cat];
+      if(options.length){
+        getDayPlan(dKey)[cat] = options[Math.floor(Math.random()*options.length)];
+      }
+    });
+  });
+  savePlan();
+  renderPlanner();
+  refreshExportText();
+};
+
+/* ---------- export (calendar list + grocery checklist, combined) ---------- */
+const SHOW_PRICES = false;  // flip to true once ingredient prices are trustworthy
+
+function buildExportList(){
+  const lines = [];
+  lines.push(`# ${rangeLabel()}`);
+  lines.push('');
+  visibleDates().forEach(d=>{
+    const dp = getDayPlan(dateKey(d));
+    lines.push(`## ${longLabel(d)}`);
+    lines.push(`- **Breakfast:** ${dp.Breakfast || '—'}`);
+    lines.push(`- **Lunch:** ${dp.Lunch || '—'}`);
+    lines.push(`- **Dinner:** ${dp.Dinner || '—'}`);
+    lines.push('');
+  });
+  return lines.join('\n').trim();
+}
+
+function buildGroceryList(){
+  const occurrences = new Map();  // recipe name (lowercased) -> {name, count}
+  visibleDates().forEach(d=>{
+    const dp = getDayPlan(dateKey(d));
+    CATEGORIES.forEach(cat=>{
+      const name = dp[cat];
+      if(!name) return;
+      const key = name.toLowerCase();
+      if(!occurrences.has(key)) occurrences.set(key, {name, count:0});
+      occurrences.get(key).count += 1;
+    });
+  });
+
+  const aisles = {};      // aisle -> Map(ingredientId -> {displayName, price, totalAmount, recipes: Map(name->count)})
+  const unmatchedMeals = [];
+
+  occurrences.forEach(({name, count})=>{
+    const recipe = recipesData.find(r => r.name.toLowerCase() === name.toLowerCase());
+    if(!recipe){ unmatchedMeals.push(name); return; }
+    recipe.ingredients.forEach(ing=>{
+      const aisle = ing.aisle || 'Other';
+      if(!aisles[aisle]) aisles[aisle] = new Map();
+      const key = ing.ingredientId || ing.raw.toLowerCase();
+      if(!aisles[aisle].has(key)){
+        aisles[aisle].set(key, {
+          displayName: ing.displayName || ing.raw,
+          price: ing.price || 0,
+          totalAmount: 0,
+          recipes: new Map()
+        });
+      }
+      const entry = aisles[aisle].get(key);
+      entry.totalAmount += (ing.amount || 1) * count;
+      entry.recipes.set(recipe.name, count);
+    });
+  });
+
+  let totalPrice = 0;
+  for(const aisle in aisles){
+    aisles[aisle].forEach(item=>{
+      item.unitsNeeded = Math.ceil(item.totalAmount - 1e-9);
+      item.lineTotal = Math.round(item.unitsNeeded * item.price * 100) / 100;
+      totalPrice += item.lineTotal;
+    });
+  }
+  totalPrice = Math.round(totalPrice * 100) / 100;
+
+  return { aisles, unmatchedMeals, totalPrice };
+}
+
+function buildGroceryMarkdown(){
+  if(!recipesData.length) return '';
+
+  const { aisles, unmatchedMeals, totalPrice } = buildGroceryList();
+  const aisleNames = Object.keys(aisles).sort();
+  if(aisleNames.length === 0) return '';
+
+  const lines = [`# Grocery List`, ''];
+  aisleNames.forEach(aisle=>{
+    lines.push(`## ${aisle}`);
+    aisles[aisle].forEach(item=>{
+      const qtyStr = item.unitsNeeded !== 1 ? ` × ${item.unitsNeeded}` : '';
+      const priceStr = (SHOW_PRICES && item.price) ? ` — $${item.lineTotal.toFixed(2)}` : '';
+      lines.push(`- [ ] ${item.displayName}${qtyStr}${priceStr}`);
+    });
+    lines.push('');
+  });
+  if(SHOW_PRICES) lines.push(`**Estimated total: $${totalPrice.toFixed(2)}**`, '');
+  return lines.join('\n').trim();
+}
+
+function refreshExportText(){
+  const textarea = document.getElementById('exportText');
+  const calendarMd = buildExportList();
+  const groceryMd = buildGroceryMarkdown();
+  textarea.value = groceryMd ? `${calendarMd}\n\n${groceryMd}` : calendarMd;
+}
+
+document.getElementById('copyBtn').onclick = async ()=>{
+  const textarea = document.getElementById('exportText');
+  const copyStatus = document.getElementById('copyStatus');
+  textarea.focus();
+  textarea.select();
+  let copied = false;
+  try{
+    await navigator.clipboard.writeText(textarea.value);
+    copied = true;
+  }catch(e){
+    try{ copied = document.execCommand('copy'); }catch(e2){ copied = false; }
+  }
+  copyStatus.textContent = copied ? 'Copied!' : 'Select all (Ctrl/Cmd+A) and copy manually.';
+  setTimeout(()=>{ copyStatus.textContent=''; }, 3000);
+};
+
+function slugifyFilename(s){
+  return s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+}
+document.getElementById('downloadBtn').onclick = ()=>{
+  const text = document.getElementById('exportText').value;
+  const blob = new Blob([text], {type: 'text/markdown'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `meal-plan-${slugifyFilename(rangeLabel())}.md`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+};
+
+loadState();
+</script>
+</body>
+</html>

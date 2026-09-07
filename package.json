@@ -1,0 +1,10 @@
+{
+  "name": "weekly-menu-planner",
+  "version": "1.0.0",
+  "description": "Meal planning calendar + grocery list generator",
+  "scripts": {
+    "build": "node build/compile.js"
+  },
+  "license": "UNLICENSED",
+  "private": true
+}

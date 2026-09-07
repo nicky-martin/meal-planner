@@ -1,0 +1,1942 @@
+[
+  {
+    "id": "meal_blueberry-pb-smoothie",
+    "name": "Blueberry PB Smoothie",
+    "slots": [
+      "Breakfast"
+    ],
+    "tags": [
+      "Quick",
+      "Smoothie",
+      "Breakfast"
+    ],
+    "ingredients": [
+      {
+        "raw": "Frozen blueberries",
+        "ingredientId": "blueberries",
+        "displayName": "Blueberries",
+        "amount": 1,
+        "price": 3.99,
+        "calories": 40,
+        "aisle": "Frozen"
+      },
+      {
+        "raw": "Banana",
+        "ingredientId": "banana",
+        "displayName": "Banana",
+        "amount": 1,
+        "price": 0.59,
+        "calories": 105,
+        "aisle": "Produce"
+      },
+      {
+        "raw": "Peanut butter",
+        "ingredientId": "peanut-butter",
+        "displayName": "Peanut Butter",
+        "amount": 1,
+        "price": 4.49,
+        "calories": 190,
+        "aisle": "Condiments"
+      },
+      {
+        "raw": "Oat milk",
+        "ingredientId": "oat-milk",
+        "displayName": "Oat Milk",
+        "amount": 1,
+        "price": 4.29,
+        "calories": 90,
+        "aisle": "Dairy"
+      },
+      {
+        "raw": "Vanilla protein powder",
+        "ingredientId": "vanilla-protein-powder",
+        "displayName": "Vanilla Protein Powder",
+        "amount": 1,
+        "price": 24.99,
+        "calories": 120,
+        "aisle": "Health"
+      }
+    ],
+    "instructions": [
+      "Add milk to blender.",
+      "Add frozen blueberries, peanut butter, protein powder, and sweetener.",
+      "Blend until smooth.",
+      "Pour and serve immediately."
+    ],
+    "sourceFile": "Pretty_Beautiful_Jess_Smoothie.md",
+    "estimatedPrice": 38.35,
+    "estimatedCalories": 545,
+    "unmatchedIngredients": []
+  },
+  {
+    "id": "meal_asian-green-bean-bowl",
+    "name": "Asian Green Bean Bowl",
+    "slots": [
+      "Dinner"
+    ],
+    "tags": [
+      "Bowls",
+      "Vegetables",
+      "Asian",
+      "Dinner"
+    ],
+    "ingredients": [
+      {
+        "raw": "Green beans (fresh or frozen)",
+        "ingredientId": "green-beans",
+        "displayName": "Green Beans",
+        "amount": 1,
+        "price": 2.49,
+        "calories": 30,
+        "aisle": "Produce"
+      },
+      {
+        "raw": "Garlic, minced",
+        "ingredientId": "garlic",
+        "displayName": "Garlic",
+        "amount": 1,
+        "price": 0.79,
+        "calories": 5,
+        "aisle": "Produce"
+      },
+      {
+        "raw": "Ginger, minced",
+        "ingredientId": "ginger",
+        "displayName": "Ginger",
+        "amount": 1,
+        "price": 0.89,
+        "calories": 5,
+        "aisle": "Produce"
+      },
+      {
+        "raw": "Soy sauce",
+        "ingredientId": "soy-sauce",
+        "displayName": "Soy Sauce",
+        "amount": 1,
+        "price": 3.49,
+        "calories": 10,
+        "aisle": "Condiments"
+      },
+      {
+        "raw": "Sesame oil",
+        "ingredientId": "sesame-oil",
+        "displayName": "Sesame Oil",
+        "amount": 1,
+        "price": 6.49,
+        "calories": 40,
+        "aisle": "Oils & Vinegars"
+      },
+      {
+        "raw": "Sesame seeds",
+        "ingredientId": "sesame-seeds",
+        "displayName": "Sesame Seeds",
+        "amount": 1,
+        "price": 3.49,
+        "calories": 50,
+        "aisle": "Spices"
+      },
+      {
+        "raw": "Rice for serving",
+        "ingredientId": "rice",
+        "displayName": "Rice",
+        "amount": 1,
+        "price": 3.99,
+        "calories": 200,
+        "aisle": "Dry Goods"
+      },
+      {
+        "raw": "Cashews or peanuts",
+        "ingredientId": "cashews",
+        "displayName": "Cashews",
+        "amount": 1,
+        "price": 6.99,
+        "calories": 160,
+        "aisle": "Nuts"
+      }
+    ],
+    "instructions": [
+      "Heat oil in a skillet and sauté garlic and ginger.",
+      "Add green beans and stir-fry 4-5 minutes.",
+      "Add soy sauce and cook 2 more minutes.",
+      "Drizzle with sesame oil and sprinkle sesame seeds.",
+      "Serve over rice with nuts if desired."
+    ],
+    "sourceFile": "asian-green-bean-bowl.md",
+    "estimatedPrice": 28.62,
+    "estimatedCalories": 500,
+    "unmatchedIngredients": []
+  },
+  {
+    "id": "meal_asian-salad",
+    "name": "Asian Salad",
+    "slots": [
+      "Lunch",
+      "Dinner"
+    ],
+    "tags": [
+      "Asian",
+      "Salad",
+      "Fresh",
+      "Lunch",
+      "Dinner"
+    ],
+    "ingredients": [
+      {
+        "raw": "Mixed asian salad",
+        "ingredientId": "mixed-asian-salad",
+        "displayName": "Mixed Asian Salad",
+        "amount": 1,
+        "price": 3.99,
+        "calories": 20,
+        "aisle": "Produce"
+      },
+      {
+        "raw": "Sesame seeds",
+        "ingredientId": "sesame-seeds",
+        "displayName": "Sesame Seeds",
+        "amount": 1,
+        "price": 3.49,
+        "calories": 50,
+        "aisle": "Spices"
+      },
+      {
+        "raw": "Soy Chicken",
+        "ingredientId": "soy-chicken",
+        "displayName": "Soy Chicken",
+        "amount": 1,
+        "price": 5.49,
+        "calories": 180,
+        "aisle": "Refrigerated"
+      },
+      {
+        "raw": "Crunchies for Asian Salad",
+        "ingredientId": "crunchies-asian-salad",
+        "displayName": "Crunchies Asian Salad",
+        "amount": 1,
+        "aisle": "Other"
+      },
+      {
+        "raw": "Peanuts",
+        "ingredientId": "peanuts",
+        "displayName": "Peanuts",
+        "amount": 1,
+        "price": 3.99,
+        "calories": 160,
+        "aisle": "Nuts"
+      }
+    ],
+    "instructions": [
+      "Combine in a large bowl."
+    ],
+    "sourceFile": "asian-salad.md",
+    "estimatedPrice": 16.96,
+    "estimatedCalories": 410,
+    "unmatchedIngredients": [
+      "Crunchies for Asian Salad"
+    ]
+  },
+  {
+    "id": "meal_asian-stirfry",
+    "name": "Asian Stirfry",
+    "slots": [
+      "Dinner"
+    ],
+    "tags": [
+      "Asian",
+      "Stir-fry",
+      "Quick",
+      "Dinner"
+    ],
+    "ingredients": [
+      {
+        "raw": "Mixed vegetables (broccoli, carrots, snap peas, onion, bell pepper)",
+        "ingredientId": "mixed-vegetables",
+        "displayName": "Mixed Vegetables",
+        "amount": 1,
+        "aisle": "Other"
+      },
+      {
+        "raw": "Garlic, minced",
+        "ingredientId": "garlic",
+        "displayName": "Garlic",
+        "amount": 1,
+        "price": 0.79,
+        "calories": 5,
+        "aisle": "Produce"
+      },
+      {
+        "raw": "Ginger, minced",
+        "ingredientId": "ginger",
+        "displayName": "Ginger",
+        "amount": 1,
+        "price": 0.89,
+        "calories": 5,
+        "aisle": "Produce"
+      },
+      {
+        "raw": "Soy sauce",
+        "ingredientId": "soy-sauce",
+        "displayName": "Soy Sauce",
+        "amount": 1,
+        "price": 3.49,
+        "calories": 10,
+        "aisle": "Condiments"
+      },
+      {
+        "raw": "Sesame oil",
+        "ingredientId": "sesame-oil",
+        "displayName": "Sesame Oil",
+        "amount": 1,
+        "price": 6.49,
+        "calories": 40,
+        "aisle": "Oils & Vinegars"
+      },
+      {
+        "raw": "Rice",
+        "ingredientId": "rice",
+        "displayName": "Rice",
+        "amount": 1,
+        "price": 3.99,
+        "calories": 200,
+        "aisle": "Dry Goods"
+      },
+      {
+        "raw": "Tofu",
+        "ingredientId": "tofu",
+        "displayName": "Tofu",
+        "amount": 1,
+        "price": 2.99,
+        "calories": 90,
+        "aisle": "Refrigerated"
+      }
+    ],
+    "instructions": [
+      "Heat oil in a wok or large skillet over high heat.",
+      "Add garlic and ginger, stir-fry 30 seconds.",
+      "Add vegetables and stir-fry",
+      "Add soy sauce and optional protein.",
+      "Cook 2-3 minutes more until vegetables are tender-crisp.",
+      "Drizzle with sesame oil and serve over rice."
+    ],
+    "sourceFile": "asian-stirfry.md",
+    "estimatedPrice": 18.64,
+    "estimatedCalories": 350,
+    "unmatchedIngredients": [
+      "Mixed vegetables (broccoli, carrots, snap peas, onion, bell pepper)"
+    ]
+  },
+  {
+    "id": "meal_breakfast-sausage-hash-browns",
+    "name": "Breakfast Sausage & Hash Browns",
+    "slots": [
+      "Breakfast"
+    ],
+    "tags": [
+      "Breakfast",
+      "Savory"
+    ],
+    "ingredients": [
+      {
+        "raw": "Breakfast sausage patties",
+        "ingredientId": "breakfast-sausage-patties",
+        "displayName": "Breakfast Sausage Patties",
+        "amount": 1,
+        "price": 4.99,
+        "calories": 180,
+        "aisle": "Frozen"
+      },
+      {
+        "raw": "Frozen hash browns",
+        "ingredientId": "hash-browns",
+        "displayName": "Hash Browns",
+        "amount": 1,
+        "price": 3.99,
+        "calories": 150,
+        "aisle": "Frozen"
+      }
+    ],
+    "instructions": [
+      "Cook in skillet"
+    ],
+    "sourceFile": "breakfast-sausage-hash-browns.md",
+    "estimatedPrice": 8.98,
+    "estimatedCalories": 330,
+    "unmatchedIngredients": []
+  },
+  {
+    "id": "meal_broccoli-chickpea-salad",
+    "name": "Broccoli & Chickpea Salad",
+    "slots": [
+      "Lunch",
+      "Dinner"
+    ],
+    "tags": [
+      "Salad",
+      "Chickpea",
+      "Vegetarian",
+      "Lunch",
+      "Dinner"
+    ],
+    "ingredients": [
+      {
+        "raw": "Fresh brocoli",
+        "ingredientId": "broccoli",
+        "displayName": "Broccoli",
+        "amount": 1,
+        "price": 3.49,
+        "calories": 50,
+        "aisle": "Produce"
+      },
+      {
+        "raw": "Canned Greek chickpeas",
+        "ingredientId": "greek-chickpeas",
+        "displayName": "Greek Chickpeas",
+        "amount": 1,
+        "price": 2.99,
+        "calories": 120,
+        "aisle": "Canned Goods"
+      },
+      {
+        "raw": "Shredded carrots",
+        "ingredientId": "carrots",
+        "displayName": "Carrots",
+        "amount": 1,
+        "price": 1.49,
+        "calories": 25,
+        "aisle": "Produce"
+      },
+      {
+        "raw": "Red onion, diced",
+        "ingredientId": "red-onion",
+        "displayName": "Red Onion",
+        "amount": 1,
+        "price": 0.99,
+        "calories": 40,
+        "aisle": "Produce"
+      },
+      {
+        "raw": "Lemon-tahini dressing",
+        "ingredientId": "lemon-tahini-dressing",
+        "displayName": "Lemon-Tahini Dressing",
+        "amount": 1,
+        "price": 4.99,
+        "calories": 70,
+        "aisle": "Condiments"
+      },
+      {
+        "raw": "Parsley",
+        "ingredientId": "parsley",
+        "displayName": "Parsley",
+        "amount": 1,
+        "price": 1.49,
+        "calories": 2,
+        "aisle": "Produce"
+      }
+    ],
+    "instructions": [
+      "Chop steamed broccoli and mix with chickpeas.",
+      "Add carrots and red onion.",
+      "Dress with lemon-tahini sauce.",
+      "Season to taste and top with fresh herbs.",
+      "Serve at room temperature or chilled."
+    ],
+    "sourceFile": "broccoli-chickpea-salad.md",
+    "estimatedPrice": 15.44,
+    "estimatedCalories": 307,
+    "unmatchedIngredients": []
+  },
+  {
+    "id": "meal_brussel-pizza",
+    "name": "Brussel Pizza",
+    "slots": [
+      "Dinner"
+    ],
+    "tags": [
+      "Pizza",
+      "Vegetarian",
+      "Roasted",
+      "Dinner"
+    ],
+    "ingredients": [
+      {
+        "raw": "Pizza flatbread",
+        "ingredientId": "pizza-flatbread",
+        "displayName": "Pizza Flatbread",
+        "amount": 1,
+        "price": 3.99,
+        "calories": 150,
+        "aisle": "Bakery"
+      },
+      {
+        "raw": "Shredded brussels sprouts",
+        "ingredientId": "brussels-sprouts",
+        "displayName": "Brussels Sprouts",
+        "amount": 1,
+        "price": 3.99,
+        "calories": 40,
+        "aisle": "Produce"
+      },
+      {
+        "raw": "Mozzarella cheese",
+        "ingredientId": "mozzarella-cheese",
+        "displayName": "Mozzarella Cheese",
+        "amount": 1,
+        "price": 4.99,
+        "calories": 90,
+        "aisle": "Dairy"
+      },
+      {
+        "raw": "Garlic spread",
+        "ingredientId": "garlic-spread",
+        "displayName": "Garlic Spread",
+        "amount": 1,
+        "price": 4.49,
+        "calories": 45,
+        "aisle": "Refrigerated"
+      },
+      {
+        "raw": "Olive oil",
+        "ingredientId": "olive-oil",
+        "displayName": "Olive Oil",
+        "amount": 1,
+        "price": 8.99,
+        "calories": 120,
+        "aisle": "Oils & Vinegars"
+      },
+      {
+        "raw": "Balsamic glaze",
+        "ingredientId": "balsamic-glaze",
+        "displayName": "Balsamic Glaze",
+        "amount": 1,
+        "price": 5.49,
+        "calories": 45,
+        "aisle": "Condiments"
+      }
+    ],
+    "instructions": [
+      "Preheat oven to 400°F.",
+      "Spread garlic spread on pizza bread.",
+      "Toss shredded brussels sprouts with olive oil, salt, and pepper.",
+      "Spread brussels sprouts on the bread.",
+      "Top with mozzarella cheese.",
+      "Bake 15 minutes until cheese is melted and brussels are crispy.",
+      "Drizzle with balsamic glaze"
+    ],
+    "sourceFile": "brussel-pizza.md",
+    "estimatedPrice": 31.94,
+    "estimatedCalories": 490,
+    "unmatchedIngredients": []
+  },
+  {
+    "id": "meal_bulgogi-tacos",
+    "name": "Bulgogi Tacos",
+    "slots": [
+      "Dinner"
+    ],
+    "tags": [
+      "Korean",
+      "Tacos",
+      "Beef",
+      "Dinner"
+    ],
+    "ingredients": [
+      {
+        "raw": "Fake Beef Bulgogi",
+        "ingredientId": "fake-beef-bulgogi",
+        "displayName": "Fake Beef Bulgogi",
+        "amount": 1,
+        "price": 6.99,
+        "calories": 220,
+        "aisle": "Frozen"
+      },
+      {
+        "raw": "Scalion pancake",
+        "ingredientId": "scallion-pancake",
+        "displayName": "Scallion Pancake",
+        "amount": 1,
+        "price": 4.49,
+        "calories": 180,
+        "aisle": "Frozen"
+      },
+      {
+        "raw": "Cilantro",
+        "ingredientId": "cilantro",
+        "displayName": "Cilantro",
+        "amount": 1,
+        "price": 0.99,
+        "calories": 1,
+        "aisle": "Produce"
+      },
+      {
+        "raw": "Onion",
+        "ingredientId": "onion",
+        "displayName": "Onion",
+        "amount": 1,
+        "price": 0.99,
+        "calories": 40,
+        "aisle": "Produce"
+      },
+      {
+        "raw": "Lime",
+        "ingredientId": "lime",
+        "displayName": "Lime",
+        "amount": 1,
+        "price": 0.59,
+        "calories": 20,
+        "aisle": "Produce"
+      },
+      {
+        "raw": "Sriracha",
+        "ingredientId": "sriracha",
+        "displayName": "Sriracha",
+        "amount": 1,
+        "price": 3.99,
+        "calories": 5,
+        "aisle": "Condiments"
+      }
+    ],
+    "instructions": [
+      "Cook beef bulgogi according to package or recipe.",
+      "Warm pancake.",
+      "Assemble taco",
+      "Top with sriracha cilantro onion and lime."
+    ],
+    "sourceFile": "bulgogi-tacos.md",
+    "estimatedPrice": 18.04,
+    "estimatedCalories": 466,
+    "unmatchedIngredients": []
+  },
+  {
+    "id": "meal_pizza",
+    "name": "Pizza",
+    "slots": [
+      "Dinner"
+    ],
+    "tags": [
+      "Italian",
+      "Cheese",
+      "Dinner"
+    ],
+    "ingredients": [
+      {
+        "raw": "Frozen pizza",
+        "ingredientId": "pizza-flatbread",
+        "displayName": "Pizza Flatbread",
+        "amount": 1,
+        "price": 3.99,
+        "calories": 150,
+        "aisle": "Bakery"
+      }
+    ],
+    "instructions": [
+      "Preheat oven to 425°F.",
+      "cook it"
+    ],
+    "sourceFile": "frozen-pizza.md",
+    "estimatedPrice": 3.99,
+    "estimatedCalories": 150,
+    "unmatchedIngredients": []
+  },
+  {
+    "id": "meal_garlic-pasta",
+    "name": "Garlic Pasta",
+    "slots": [
+      "Dinner"
+    ],
+    "tags": [
+      "Italian",
+      "Pasta",
+      "Vegetarian",
+      "Quick",
+      "Dinner"
+    ],
+    "ingredients": [
+      {
+        "raw": "Angel hair pasta",
+        "ingredientId": "angel-hair-pasta",
+        "displayName": "Angel Hair Pasta",
+        "amount": 1,
+        "price": 2.19,
+        "calories": 210,
+        "aisle": "Dry Goods"
+      },
+      {
+        "raw": "Garlic, 2 cloves",
+        "ingredientId": "garlic",
+        "displayName": "Garlic",
+        "amount": 1,
+        "price": 0.79,
+        "calories": 5,
+        "aisle": "Produce"
+      },
+      {
+        "raw": "Olive oil",
+        "ingredientId": "olive-oil",
+        "displayName": "Olive Oil",
+        "amount": 1,
+        "price": 8.99,
+        "calories": 120,
+        "aisle": "Oils & Vinegars"
+      },
+      {
+        "raw": "Red pepper flakes",
+        "ingredientId": "red-pepper-flakes",
+        "displayName": "Red Pepper Flakes",
+        "amount": 1,
+        "price": 2.99,
+        "calories": 5,
+        "aisle": "Spices"
+      },
+      {
+        "raw": "Fresh parsley",
+        "ingredientId": "parsley",
+        "displayName": "Parsley",
+        "amount": 1,
+        "price": 1.49,
+        "calories": 2,
+        "aisle": "Produce"
+      }
+    ],
+    "instructions": [
+      "Cook pasta to al dente, reserving pasta water.",
+      "In a pan, warm olive oil and add garlic spread or minced garlic.",
+      "Cook 1-2 minutes until fragrant, add red pepper flakes.",
+      "Drain pasta and toss with garlic oil, adding pasta water as needed.",
+      "Top with parmesan and fresh parsley. Serve."
+    ],
+    "sourceFile": "garlic-pasta.md",
+    "estimatedPrice": 16.45,
+    "estimatedCalories": 342,
+    "unmatchedIngredients": []
+  },
+  {
+    "id": "meal_greek-salad",
+    "name": "Greek Salad",
+    "slots": [
+      "Lunch",
+      "Dinner"
+    ],
+    "tags": [
+      "Greek",
+      "Mediterranean",
+      "Salad",
+      "Vegetarian",
+      "Lunch",
+      "Dinner"
+    ],
+    "ingredients": [
+      {
+        "raw": "Greek salad mix",
+        "ingredientId": "greek-salad-mix",
+        "displayName": "Greek Salad Mix",
+        "amount": 1,
+        "price": 3.99,
+        "calories": 20,
+        "aisle": "Produce"
+      },
+      {
+        "raw": "Falafel",
+        "ingredientId": "falafel",
+        "displayName": "Falafel",
+        "amount": 1,
+        "price": 5.99,
+        "calories": 230,
+        "aisle": "Frozen"
+      }
+    ],
+    "instructions": [
+      "Air fry falafel",
+      "Toss salad with dressing and serve."
+    ],
+    "sourceFile": "greek-salad.md",
+    "estimatedPrice": 9.98,
+    "estimatedCalories": 250,
+    "unmatchedIngredients": []
+  },
+  {
+    "id": "meal_greek-sandwiches",
+    "name": "Greek Sandwiches",
+    "slots": [
+      "Lunch",
+      "Dinner"
+    ],
+    "tags": [
+      "Sandwich",
+      "Greek",
+      "Vegetarian",
+      "Lunch",
+      "Dinner"
+    ],
+    "ingredients": [
+      {
+        "raw": "Greek chickpeas",
+        "ingredientId": "greek-chickpeas",
+        "displayName": "Greek Chickpeas",
+        "amount": 1,
+        "price": 2.99,
+        "calories": 120,
+        "aisle": "Canned Goods"
+      },
+      {
+        "raw": "Dolmas leaves",
+        "ingredientId": "dolmas-leaves",
+        "displayName": "Dolmas Leaves",
+        "amount": 1,
+        "price": 5.99,
+        "calories": 40,
+        "aisle": "Refrigerated"
+      },
+      {
+        "raw": "Onions",
+        "ingredientId": "onions",
+        "displayName": "Onions",
+        "amount": 1,
+        "price": 0.99,
+        "calories": 40,
+        "aisle": "Produce"
+      },
+      {
+        "raw": "Hummus",
+        "ingredientId": "hummus",
+        "displayName": "Hummus",
+        "amount": 1,
+        "price": 4.49,
+        "calories": 70,
+        "aisle": "Refrigerated"
+      },
+      {
+        "raw": "Good bread",
+        "ingredientId": "bread",
+        "displayName": "Bread",
+        "amount": 1,
+        "price": 3.99,
+        "calories": 100,
+        "aisle": "Bakery"
+      }
+    ],
+    "instructions": [
+      "Food process the slurry",
+      "Toast bread",
+      "Chop fresh onion on there"
+    ],
+    "sourceFile": "greek-sandwiches.md",
+    "estimatedPrice": 18.45,
+    "estimatedCalories": 370,
+    "unmatchedIngredients": []
+  },
+  {
+    "id": "meal_homemade-harvest-bowl",
+    "name": "Homemade Harvest Bowl",
+    "slots": [
+      "Dinner"
+    ],
+    "tags": [
+      "Bowls",
+      "Vegetarian",
+      "Roasted",
+      "Dinner"
+    ],
+    "ingredients": [
+      {
+        "raw": "Steamed or roasted rice",
+        "ingredientId": "rice",
+        "displayName": "Rice",
+        "amount": 1,
+        "price": 3.99,
+        "calories": 200,
+        "aisle": "Dry Goods"
+      },
+      {
+        "raw": "Roasted sweet potato",
+        "ingredientId": "sweet-potato",
+        "displayName": "Sweet Potato",
+        "amount": 1,
+        "price": 1.29,
+        "calories": 100,
+        "aisle": "Produce"
+      },
+      {
+        "raw": "Roasted brussels",
+        "ingredientId": "brussels",
+        "displayName": "Brussels",
+        "amount": 1,
+        "price": 3.99,
+        "calories": 40,
+        "aisle": "Produce"
+      },
+      {
+        "raw": "Shredded carots",
+        "ingredientId": "shredded-carots",
+        "displayName": "Shredded Carots",
+        "amount": 1,
+        "price": 2.49,
+        "calories": 25,
+        "aisle": "Produce"
+      },
+      {
+        "raw": "Chickpeas",
+        "ingredientId": "chickpeas",
+        "displayName": "Chickpeas",
+        "amount": 1,
+        "price": 1.29,
+        "calories": 120,
+        "aisle": "Canned Goods"
+      },
+      {
+        "raw": "Kale",
+        "ingredientId": "kale",
+        "displayName": "Kale",
+        "amount": 1,
+        "price": 2.99,
+        "calories": 30,
+        "aisle": "Produce"
+      },
+      {
+        "raw": "Vinaigrette",
+        "ingredientId": "vinaigrette",
+        "displayName": "Vinaigrette",
+        "amount": 1,
+        "price": 4.49,
+        "calories": 90,
+        "aisle": "Condiments"
+      },
+      {
+        "raw": "Sunflower seeds",
+        "ingredientId": "sunflower-seeds",
+        "displayName": "Sunflower Seeds",
+        "amount": 1,
+        "price": 3.49,
+        "calories": 160,
+        "aisle": "Nuts"
+      }
+    ],
+    "instructions": [
+      "cook the chickpeas",
+      "roast the sweet potato, then chop it",
+      "roast the brussles",
+      "prep the kale, massage in oil",
+      "assemble and dress",
+      "top with seeds"
+    ],
+    "sourceFile": "homemade-harvest-bowl.md",
+    "estimatedPrice": 24.02,
+    "estimatedCalories": 765,
+    "unmatchedIngredients": []
+  },
+  {
+    "id": "meal_indian-potato-tacos",
+    "name": "Indian Potato Tacos",
+    "slots": [
+      "Dinner"
+    ],
+    "tags": [
+      "Indian",
+      "Tacos",
+      "Vegetarian",
+      "Dinner"
+    ],
+    "ingredients": [
+      {
+        "raw": "Naan",
+        "ingredientId": "naan",
+        "displayName": "Naan",
+        "amount": 1,
+        "price": 3.99,
+        "calories": 180,
+        "aisle": "Bakery"
+      },
+      {
+        "raw": "Potatos",
+        "ingredientId": "potatoes",
+        "displayName": "Potatoes",
+        "amount": 1,
+        "price": 4.29,
+        "calories": 110,
+        "aisle": "Produce"
+      },
+      {
+        "raw": "Frozen peas",
+        "ingredientId": "greek-chickpeas",
+        "displayName": "Greek Chickpeas",
+        "amount": 1,
+        "price": 2.99,
+        "calories": 120,
+        "aisle": "Canned Goods"
+      },
+      {
+        "raw": "Red onion, thinly sliced",
+        "ingredientId": "red-onion",
+        "displayName": "Red Onion",
+        "amount": 1,
+        "price": 0.99,
+        "calories": 40,
+        "aisle": "Produce"
+      },
+      {
+        "raw": "Cilantro",
+        "ingredientId": "cilantro",
+        "displayName": "Cilantro",
+        "amount": 1,
+        "price": 0.99,
+        "calories": 1,
+        "aisle": "Produce"
+      },
+      {
+        "raw": "Lime",
+        "ingredientId": "lime",
+        "displayName": "Lime",
+        "amount": 1,
+        "price": 0.59,
+        "calories": 20,
+        "aisle": "Produce"
+      },
+      {
+        "raw": "Jalapeño",
+        "ingredientId": "jalape-o",
+        "displayName": "JalapeñO",
+        "amount": 1,
+        "price": 0.79,
+        "calories": 5,
+        "aisle": "Produce"
+      }
+    ],
+    "instructions": [
+      "Cook diced potatoes with curry powder, turmeric, and cumin.",
+      "Mash um up a bit",
+      "Add frozen peas",
+      "Warm flatbread.",
+      "Assemble tacos with slurry, curried potatoes, onion, cilantro.",
+      "Top with yogurt and serve with lime wedges."
+    ],
+    "sourceFile": "indian-potato-tacos.md",
+    "estimatedPrice": 14.63,
+    "estimatedCalories": 476,
+    "unmatchedIngredients": []
+  },
+  {
+    "id": "meal_indian-tacos",
+    "name": "Indian Tacos",
+    "slots": [
+      "Dinner"
+    ],
+    "tags": [
+      "Indian",
+      "Tacos",
+      "Fusion",
+      "Dinner"
+    ],
+    "ingredients": [
+      {
+        "raw": "Flatbread or naan",
+        "ingredientId": "flatbread",
+        "displayName": "Flatbread",
+        "amount": 1,
+        "price": 3.99,
+        "calories": 150,
+        "aisle": "Bakery"
+      },
+      {
+        "raw": "Chickpeas or tofu, cooked with Indian spices",
+        "ingredientId": "chickpeas",
+        "displayName": "Chickpeas",
+        "amount": 1,
+        "price": 1.29,
+        "calories": 120,
+        "aisle": "Canned Goods"
+      },
+      {
+        "raw": "Cilantro",
+        "ingredientId": "cilantro",
+        "displayName": "Cilantro",
+        "amount": 1,
+        "price": 0.99,
+        "calories": 1,
+        "aisle": "Produce"
+      },
+      {
+        "raw": "Red onion",
+        "ingredientId": "red-onion",
+        "displayName": "Red Onion",
+        "amount": 1,
+        "price": 0.99,
+        "calories": 40,
+        "aisle": "Produce"
+      },
+      {
+        "raw": "Mango or apple, diced",
+        "ingredientId": "mango",
+        "displayName": "Mango",
+        "amount": 1,
+        "price": 1.99,
+        "calories": 100,
+        "aisle": "Produce"
+      },
+      {
+        "raw": "Lime",
+        "ingredientId": "lime",
+        "displayName": "Lime",
+        "amount": 1,
+        "price": 0.59,
+        "calories": 20,
+        "aisle": "Produce"
+      },
+      {
+        "raw": "Yogurt or cucumber raita",
+        "ingredientId": "cucumber-raita",
+        "displayName": "Cucumber Raita",
+        "amount": 1,
+        "price": 3.99,
+        "calories": 60,
+        "aisle": "Refrigerated"
+      },
+      {
+        "raw": "Jalapeño (optional)",
+        "ingredientId": "jalape-o",
+        "displayName": "JalapeñO",
+        "amount": 1,
+        "price": 0.79,
+        "calories": 5,
+        "aisle": "Produce"
+      }
+    ],
+    "instructions": [
+      "Warm the flatbread or naan.",
+      "Cook chickpeas with curry spices and garlic.",
+      "Assemble tacos with spiced chickpeas, cilantro, onion, and mango.",
+      "Add a dollop of yogurt.",
+      "Serve with lime wedges."
+    ],
+    "sourceFile": "indian-tacos.md",
+    "estimatedPrice": 14.62,
+    "estimatedCalories": 496,
+    "unmatchedIngredients": []
+  },
+  {
+    "id": "meal_jackfruit-bbq",
+    "name": "Jackfruit BBQ",
+    "slots": [
+      "Dinner"
+    ],
+    "tags": [
+      "BBQ",
+      "Vegetarian",
+      "Jackfruit",
+      "Dinner"
+    ],
+    "ingredients": [
+      {
+        "raw": "Canned jackfruit",
+        "ingredientId": "jackfruit",
+        "displayName": "Jackfruit",
+        "amount": 1,
+        "price": 3.49,
+        "calories": 90,
+        "aisle": "Canned Goods"
+      },
+      {
+        "raw": "BBQ sauce",
+        "ingredientId": "bbq-sauce",
+        "displayName": "Bbq Sauce",
+        "amount": 1,
+        "price": 3.49,
+        "calories": 60,
+        "aisle": "Condiments"
+      },
+      {
+        "raw": "Slaw",
+        "ingredientId": "slaw",
+        "displayName": "Slaw",
+        "amount": 1,
+        "price": 3.49,
+        "calories": 30,
+        "aisle": "Produce"
+      },
+      {
+        "raw": "Buns",
+        "ingredientId": "buns",
+        "displayName": "Buns",
+        "amount": 1,
+        "price": 3.49,
+        "calories": 150,
+        "aisle": "Bakery"
+      }
+    ],
+    "instructions": [
+      "Drain and rinse canned jackfruit.",
+      "Shred the jackfruit with two forks.",
+      "Heat BBQ sauce in a pan and add shredded jackfruit.",
+      "Simmer 5-10 minutes until heated through.",
+      "Serve on bread or tortillas with coleslaw."
+    ],
+    "sourceFile": "jackfruit-bbq.md",
+    "estimatedPrice": 13.96,
+    "estimatedCalories": 330,
+    "unmatchedIngredients": []
+  },
+  {
+    "id": "meal_japanese-curry",
+    "name": "Japanese Curry",
+    "slots": [
+      "Dinner"
+    ],
+    "tags": [
+      "Japanese",
+      "Curry",
+      "Vegetarian",
+      "Dinner"
+    ],
+    "ingredients": [
+      {
+        "raw": "Potatoes",
+        "ingredientId": "potatoes",
+        "displayName": "Potatoes",
+        "amount": 1,
+        "price": 4.29,
+        "calories": 110,
+        "aisle": "Produce"
+      },
+      {
+        "raw": "Carrots",
+        "ingredientId": "carrots",
+        "displayName": "Carrots",
+        "amount": 1,
+        "price": 1.49,
+        "calories": 25,
+        "aisle": "Produce"
+      },
+      {
+        "raw": "Onion",
+        "ingredientId": "onion",
+        "displayName": "Onion",
+        "amount": 1,
+        "price": 0.99,
+        "calories": 40,
+        "aisle": "Produce"
+      },
+      {
+        "raw": "Fake chicken",
+        "ingredientId": "fake-chicken",
+        "displayName": "Fake Chicken",
+        "amount": 1,
+        "price": 5.99,
+        "calories": 190,
+        "aisle": "Frozen"
+      },
+      {
+        "raw": "Japanese curry paste or curry blocks",
+        "ingredientId": "japanese-curry-paste",
+        "displayName": "Japanese Curry Paste",
+        "amount": 1,
+        "price": 3.99,
+        "calories": 90,
+        "aisle": "Sauces"
+      },
+      {
+        "raw": "Rice for serving",
+        "ingredientId": "rice",
+        "displayName": "Rice",
+        "amount": 1,
+        "price": 3.99,
+        "calories": 200,
+        "aisle": "Dry Goods"
+      }
+    ],
+    "instructions": [
+      "Peel and dice potatoes, carrots, and onion.",
+      "If using curry blocks, heat a pan and add oil.",
+      "Sauté onions until soft, add potatoes and carrots.",
+      "Add water and simmer until vegetables are tender (10-15 min).",
+      "Add curry paste/blocks and stir until dissolved.",
+      "Add tofu or cooked chicken and simmer 5 more minutes.",
+      "Serve over steamed rice."
+    ],
+    "sourceFile": "japanese-curry.md",
+    "estimatedPrice": 20.74,
+    "estimatedCalories": 655,
+    "unmatchedIngredients": []
+  },
+  {
+    "id": "meal_lemon-pasta",
+    "name": "Lemon Pasta",
+    "slots": [
+      "Dinner"
+    ],
+    "tags": [
+      "Pasta",
+      "Italian",
+      "Vegetarian",
+      "Dinner"
+    ],
+    "ingredients": [
+      {
+        "raw": "Lemon pasta",
+        "ingredientId": "lemon-pasta",
+        "displayName": "Lemon Pasta",
+        "amount": 1,
+        "price": 2.99,
+        "calories": 210,
+        "aisle": "Dry Goods"
+      },
+      {
+        "raw": "Garlic, minced",
+        "ingredientId": "garlic",
+        "displayName": "Garlic",
+        "amount": 1,
+        "price": 0.79,
+        "calories": 5,
+        "aisle": "Produce"
+      },
+      {
+        "raw": "Olive oil",
+        "ingredientId": "olive-oil",
+        "displayName": "Olive Oil",
+        "amount": 1,
+        "price": 8.99,
+        "calories": 120,
+        "aisle": "Oils & Vinegars"
+      },
+      {
+        "raw": "Fresh parsley",
+        "ingredientId": "parsley",
+        "displayName": "Parsley",
+        "amount": 1,
+        "price": 1.49,
+        "calories": 2,
+        "aisle": "Produce"
+      }
+    ],
+    "instructions": [
+      "Cook pasta to al dente, reserving pasta water.",
+      "In a pan, warm olive oil and sauté garlic.",
+      "Add lemon juice and zest.",
+      "Toss drained pasta with lemon mixture, adding pasta water as needed.",
+      "Top with parmesan and fresh parsley.",
+      "Serve warm."
+    ],
+    "sourceFile": "lemon-pasta.md",
+    "estimatedPrice": 14.26,
+    "estimatedCalories": 337,
+    "unmatchedIngredients": []
+  },
+  {
+    "id": "meal_quesadilla",
+    "name": "Quesadilla",
+    "slots": [
+      "Lunch",
+      "Dinner"
+    ],
+    "tags": [
+      "Mexican",
+      "Cheese",
+      "Quick",
+      "Lunch",
+      "Dinner"
+    ],
+    "ingredients": [
+      {
+        "raw": "Flour tortillas",
+        "ingredientId": "flour-tortillas",
+        "displayName": "Flour Tortillas",
+        "amount": 1,
+        "price": 3.29,
+        "calories": 140,
+        "aisle": "Bakery"
+      },
+      {
+        "raw": "Mexican cheese blend",
+        "ingredientId": "mexican-cheese-blend",
+        "displayName": "Mexican Cheese Blend",
+        "amount": 1,
+        "price": 4.49,
+        "calories": 110,
+        "aisle": "Dairy"
+      },
+      {
+        "raw": "Onion",
+        "ingredientId": "onion",
+        "displayName": "Onion",
+        "amount": 1,
+        "price": 0.99,
+        "calories": 40,
+        "aisle": "Produce"
+      },
+      {
+        "raw": "Black beans,",
+        "ingredientId": "black-beans",
+        "displayName": "Black Beans",
+        "amount": 1,
+        "price": 1.29,
+        "calories": 110,
+        "aisle": "Canned Goods"
+      },
+      {
+        "raw": "salsa",
+        "ingredientId": "salsa",
+        "displayName": "Salsa",
+        "amount": 1,
+        "price": 3.49,
+        "calories": 15,
+        "aisle": "Condiments"
+      },
+      {
+        "raw": "Butter",
+        "ingredientId": "butter",
+        "displayName": "Butter",
+        "amount": 1,
+        "price": 4.99,
+        "calories": 100,
+        "aisle": "Dairy"
+      }
+    ],
+    "instructions": [
+      "Heat butter in a skillet over medium heat.",
+      "Place one tortilla in the pan.",
+      "Add cheese and fillings to one half.",
+      "Fold tortilla in half.",
+      "Cook 2-3 minutes until golden, flip and cook other side.",
+      "Slice and serve with salsa and yogurt."
+    ],
+    "sourceFile": "quesadilla.md",
+    "estimatedPrice": 18.54,
+    "estimatedCalories": 515,
+    "unmatchedIngredients": []
+  },
+  {
+    "id": "meal_ramen",
+    "name": "Ramen",
+    "slots": [
+      "Dinner"
+    ],
+    "tags": [
+      "Asian",
+      "Noodles",
+      "Quick",
+      "Dinner"
+    ],
+    "ingredients": [
+      {
+        "raw": "Ramen noodles",
+        "ingredientId": "ramen-noodles",
+        "displayName": "Ramen Noodles",
+        "amount": 1,
+        "price": 2.49,
+        "calories": 190,
+        "aisle": "Dry Goods"
+      },
+      {
+        "raw": "Broccoli",
+        "ingredientId": "broccoli",
+        "displayName": "Broccoli",
+        "amount": 1,
+        "price": 3.49,
+        "calories": 50,
+        "aisle": "Produce"
+      },
+      {
+        "raw": "Soy sauce",
+        "ingredientId": "soy-sauce",
+        "displayName": "Soy Sauce",
+        "amount": 1,
+        "price": 3.49,
+        "calories": 10,
+        "aisle": "Condiments"
+      },
+      {
+        "raw": "Ginger",
+        "ingredientId": "ginger",
+        "displayName": "Ginger",
+        "amount": 1,
+        "price": 0.89,
+        "calories": 5,
+        "aisle": "Produce"
+      },
+      {
+        "raw": "Garlic",
+        "ingredientId": "garlic",
+        "displayName": "Garlic",
+        "amount": 1,
+        "price": 0.79,
+        "calories": 5,
+        "aisle": "Produce"
+      },
+      {
+        "raw": "Green onions",
+        "ingredientId": "green-onions",
+        "displayName": "Green Onions",
+        "amount": 1,
+        "price": 0.99,
+        "calories": 5,
+        "aisle": "Produce"
+      },
+      {
+        "raw": "Frozen peas",
+        "ingredientId": "greek-chickpeas",
+        "displayName": "Greek Chickpeas",
+        "amount": 1,
+        "price": 2.99,
+        "calories": 120,
+        "aisle": "Canned Goods"
+      },
+      {
+        "raw": "Edamame",
+        "ingredientId": "edamame",
+        "displayName": "Edamame",
+        "amount": 1,
+        "price": 2.99,
+        "calories": 90,
+        "aisle": "Frozen"
+      },
+      {
+        "raw": "Fake chicken",
+        "ingredientId": "fake-chicken",
+        "displayName": "Fake Chicken",
+        "amount": 1,
+        "price": 5.99,
+        "calories": 190,
+        "aisle": "Frozen"
+      }
+    ],
+    "instructions": [
+      "Bring broth to a boil.",
+      "Add soy sauce, ginger, and garlic.",
+      "Add ramen noodles and cook according to package.",
+      "Add peas or edamame and cook 2 more minutes.",
+      "Crack in egg if desired and stir gently.",
+      "Top with green onions and serve."
+    ],
+    "sourceFile": "ramen.md",
+    "estimatedPrice": 24.11,
+    "estimatedCalories": 665,
+    "unmatchedIngredients": []
+  },
+  {
+    "id": "meal_ravioli-broccoli",
+    "name": "Ravioli Broccoli",
+    "slots": [
+      "Dinner"
+    ],
+    "tags": [
+      "Pasta",
+      "Italian",
+      "Dinner"
+    ],
+    "ingredients": [
+      {
+        "raw": "Fridge ravioli",
+        "ingredientId": "fridge-ravioli",
+        "displayName": "Fridge Ravioli",
+        "amount": 1,
+        "price": 5.99,
+        "calories": 250,
+        "aisle": "Refrigerated"
+      },
+      {
+        "raw": "Olive oil",
+        "ingredientId": "olive-oil",
+        "displayName": "Olive Oil",
+        "amount": 1,
+        "price": 8.99,
+        "calories": 120,
+        "aisle": "Oils & Vinegars"
+      },
+      {
+        "raw": "Garlic, minced",
+        "ingredientId": "garlic",
+        "displayName": "Garlic",
+        "amount": 1,
+        "price": 0.79,
+        "calories": 5,
+        "aisle": "Produce"
+      },
+      {
+        "raw": "Fresh basil (optional)",
+        "ingredientId": "basil",
+        "displayName": "Basil",
+        "amount": 1,
+        "price": 2.49,
+        "calories": 5,
+        "aisle": "Produce"
+      }
+    ],
+    "instructions": [
+      "Bring salted water to boil and cook ravioli according to package.",
+      "Drain and return to pot.",
+      "Toss with olive oil, minced garlic, and parmesan.",
+      "Add fresh basil if desired.",
+      "Season to taste and serve warm."
+    ],
+    "sourceFile": "ravioli-broccoli.md",
+    "estimatedPrice": 18.26,
+    "estimatedCalories": 380,
+    "unmatchedIngredients": []
+  },
+  {
+    "id": "meal_squash-ravioli",
+    "name": "Squash Ravioli",
+    "slots": [
+      "Dinner"
+    ],
+    "tags": [
+      "Pasta",
+      "Butternut",
+      "Italian",
+      "Dinner"
+    ],
+    "ingredients": [
+      {
+        "raw": "Butternut squash ravioli (frozen or fresh)",
+        "ingredientId": "butternut-squash-ravioli",
+        "displayName": "Butternut Squash Ravioli",
+        "amount": 1,
+        "price": 6.99,
+        "calories": 260,
+        "aisle": "Refrigerated"
+      },
+      {
+        "raw": "Sage butter",
+        "ingredientId": "sage-butter",
+        "displayName": "Sage Butter",
+        "amount": 1,
+        "price": 4.99,
+        "calories": 100,
+        "aisle": "Dairy"
+      },
+      {
+        "raw": "Parmesan cheese",
+        "ingredientId": "parmesan-cheese",
+        "displayName": "Parmesan Cheese",
+        "amount": 1,
+        "price": 5.49,
+        "calories": 110,
+        "aisle": "Dairy"
+      },
+      {
+        "raw": "Nuts (walnuts or pine nuts) - optional",
+        "ingredientId": "nuts",
+        "displayName": "Nuts",
+        "amount": 1,
+        "price": 5.99,
+        "calories": 170,
+        "aisle": "Nuts"
+      },
+      {
+        "raw": "Salt and pepper",
+        "ingredientId": "salt-pepper",
+        "displayName": "Salt Pepper",
+        "amount": 1,
+        "price": 2.49,
+        "calories": 0,
+        "aisle": "Spices"
+      }
+    ],
+    "instructions": [
+      "Cook ravioli according to package in salted boiling water.",
+      "Drain and set aside.",
+      "In a pan, melt butter with fresh sage.",
+      "Toss ravioli with sage butter.",
+      "Top with parmesan and nuts if desired.",
+      "Serve warm."
+    ],
+    "sourceFile": "squash-ravioli.md",
+    "estimatedPrice": 25.95,
+    "estimatedCalories": 640,
+    "unmatchedIngredients": []
+  },
+  {
+    "id": "meal_smoothie",
+    "name": "Smoothie",
+    "slots": [
+      "Breakfast",
+      "Lunch"
+    ],
+    "tags": [
+      "Quick",
+      "Breakfast",
+      "No-Cook",
+      "Vegan",
+      "Breakfast",
+      "Lunch"
+    ],
+    "ingredients": [
+      {
+        "raw": "Frozen strawberry",
+        "ingredientId": "frozen-strawberry",
+        "displayName": "Frozen Strawberry",
+        "amount": 1,
+        "price": 3.99,
+        "calories": 30,
+        "aisle": "Frozen"
+      },
+      {
+        "raw": "Oat milk",
+        "ingredientId": "oat-milk",
+        "displayName": "Oat Milk",
+        "amount": 1,
+        "price": 4.29,
+        "calories": 90,
+        "aisle": "Dairy"
+      },
+      {
+        "raw": "Vanilla protein powder",
+        "ingredientId": "vanilla-protein-powder",
+        "displayName": "Vanilla Protein Powder",
+        "amount": 1,
+        "price": 24.99,
+        "calories": 120,
+        "aisle": "Health"
+      },
+      {
+        "raw": "Banana",
+        "ingredientId": "banana",
+        "displayName": "Banana",
+        "amount": 1,
+        "price": 0.59,
+        "calories": 105,
+        "aisle": "Produce"
+      }
+    ],
+    "instructions": [
+      "Add milk to blender first.",
+      "Add frozen fruit, protein powder, and sweetener.",
+      "Blend until smooth.",
+      "Add optional ingredients if desired.",
+      "Pour and serve immediately."
+    ],
+    "sourceFile": "strawberry-smoothie.md",
+    "estimatedPrice": 33.86,
+    "estimatedCalories": 345,
+    "unmatchedIngredients": []
+  },
+  {
+    "id": "meal_sweet-potato-meat-bowl",
+    "name": "Sweet Potato Meat Bowl",
+    "slots": [
+      "Dinner"
+    ],
+    "tags": [
+      "Roasted",
+      "Bowls",
+      "Dinner"
+    ],
+    "ingredients": [
+      {
+        "raw": "Sweet potato, cubed",
+        "ingredientId": "sweet-potato",
+        "displayName": "Sweet Potato",
+        "amount": 1,
+        "price": 1.29,
+        "calories": 100,
+        "aisle": "Produce"
+      },
+      {
+        "raw": "Impossible Beef",
+        "ingredientId": "impossible-beef",
+        "displayName": "Impossible Beef",
+        "amount": 1,
+        "price": 7.99,
+        "calories": 240,
+        "aisle": "Refrigerated"
+      },
+      {
+        "raw": "Green beans",
+        "ingredientId": "green-beans",
+        "displayName": "Green Beans",
+        "amount": 1,
+        "price": 2.49,
+        "calories": 30,
+        "aisle": "Produce"
+      },
+      {
+        "raw": "Sesame oil",
+        "ingredientId": "sesame-oil",
+        "displayName": "Sesame Oil",
+        "amount": 1,
+        "price": 6.49,
+        "calories": 40,
+        "aisle": "Oils & Vinegars"
+      },
+      {
+        "raw": "Lime juice",
+        "ingredientId": "lime",
+        "displayName": "Lime",
+        "amount": 1,
+        "price": 0.59,
+        "calories": 20,
+        "aisle": "Produce"
+      }
+    ],
+    "instructions": [
+      "Preheat oven to 400°F.",
+      "Toss sweet potato with olive oil and spices, cumin and chili pepper",
+      "Roast 20-25 minutes until tender.",
+      "Warm taco meat.",
+      "Assemble bowl with roasted sweet potato, meat, and vegetables.",
+      "Drizzle with lime juice and serve."
+    ],
+    "sourceFile": "sweet-potato-meat-bowl.md",
+    "estimatedPrice": 18.85,
+    "estimatedCalories": 430,
+    "unmatchedIngredients": []
+  },
+  {
+    "id": "meal_thai-meatball-salad",
+    "name": "Thai Meatball Salad",
+    "slots": [
+      "Dinner"
+    ],
+    "tags": [
+      "Thai",
+      "Meatballs",
+      "Salad",
+      "Dinner"
+    ],
+    "ingredients": [
+      {
+        "raw": "Frozen veggie meatballs",
+        "ingredientId": "frozen-veggie-meatballs",
+        "displayName": "Frozen Veggie Meatballs",
+        "amount": 1,
+        "price": 5.99,
+        "calories": 210,
+        "aisle": "Frozen"
+      },
+      {
+        "raw": "Thai salad",
+        "ingredientId": "thai-salad",
+        "displayName": "Thai Salad",
+        "amount": 1,
+        "price": 3.99,
+        "calories": 20,
+        "aisle": "Produce"
+      }
+    ],
+    "instructions": [
+      "Cook frozen meatballs according to package.",
+      "While meatballs cook, prepare salad greens and vegetables."
+    ],
+    "sourceFile": "thai-meatball-salad.md",
+    "estimatedPrice": 9.98,
+    "estimatedCalories": 230,
+    "unmatchedIngredients": []
+  },
+  {
+    "id": "meal_yakisoba",
+    "name": "Yakisoba",
+    "slots": [
+      "Dinner"
+    ],
+    "tags": [
+      "Japanese",
+      "Noodles",
+      "Stir-fry",
+      "Dinner"
+    ],
+    "ingredients": [
+      {
+        "raw": "Yakisoba noodles x2",
+        "ingredientId": "yakisoba-noodles",
+        "displayName": "Yakisoba Noodles",
+        "amount": 2,
+        "price": 2.99,
+        "calories": 200,
+        "aisle": "Refrigerated"
+      },
+      {
+        "raw": "Broccol",
+        "ingredientId": "broccoli",
+        "displayName": "Broccoli",
+        "amount": 1,
+        "price": 3.49,
+        "calories": 50,
+        "aisle": "Produce"
+      },
+      {
+        "raw": "Garlic, minced",
+        "ingredientId": "garlic",
+        "displayName": "Garlic",
+        "amount": 1,
+        "price": 0.79,
+        "calories": 5,
+        "aisle": "Produce"
+      },
+      {
+        "raw": "Ginger, minced",
+        "ingredientId": "ginger",
+        "displayName": "Ginger",
+        "amount": 1,
+        "price": 0.89,
+        "calories": 5,
+        "aisle": "Produce"
+      },
+      {
+        "raw": "Soy sauce",
+        "ingredientId": "soy-sauce",
+        "displayName": "Soy Sauce",
+        "amount": 1,
+        "price": 3.49,
+        "calories": 10,
+        "aisle": "Condiments"
+      },
+      {
+        "raw": "Sesame oil",
+        "ingredientId": "sesame-oil",
+        "displayName": "Sesame Oil",
+        "amount": 1,
+        "price": 6.49,
+        "calories": 40,
+        "aisle": "Oils & Vinegars"
+      }
+    ],
+    "instructions": [
+      "Cook noodles according to package and drain.",
+      "Heat oil in a wok and stir-fry vegetables.",
+      "Add garlic, ginger, and cooked noodles.",
+      "Toss with soy sauce and mirin.",
+      "Drizzle with sesame oil and top with bonito flakes if using."
+    ],
+    "sourceFile": "yakisoba.md",
+    "estimatedPrice": 21.13,
+    "estimatedCalories": 510,
+    "unmatchedIngredients": []
+  },
+  {
+    "id": "meal_yogurt",
+    "name": "Yogurt",
+    "slots": [
+      "Breakfast"
+    ],
+    "tags": [
+      "Quick",
+      "No-Cook",
+      "Breakfast"
+    ],
+    "ingredients": [
+      {
+        "raw": "yogurt",
+        "ingredientId": "yogurt",
+        "displayName": "Yogurt",
+        "amount": 1,
+        "price": 4.99,
+        "calories": 100,
+        "aisle": "Dairy"
+      },
+      {
+        "raw": "Granola, 1/5th package",
+        "ingredientId": "granola",
+        "displayName": "Granola",
+        "amount": 0.2,
+        "price": 4.29,
+        "calories": 140,
+        "aisle": "Cereal"
+      }
+    ],
+    "instructions": [
+      "Top with granola",
+      "Serve immediately."
+    ],
+    "sourceFile": "yogurt-granola.md",
+    "estimatedPrice": 5.85,
+    "estimatedCalories": 128,
+    "unmatchedIngredients": []
+  }
+]
